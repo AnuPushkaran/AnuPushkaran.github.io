@@ -22,9 +22,10 @@
         <h1>Main Content</h1>
         <p>This is the main content of the page.</p>
         <!-- Button to trigger the drawer -->
-        <button class="btn btn-primary" data-bs-toggle="offcanvas" data-bs-target="#offcanvasRight" aria-controls="offcanvasRight">
+        <button class="btn btn-primary" data-bs-toggle="offcanvas"  id="openDrawerBtn" data-bs-target="#offcanvasRight" aria-controls="offcanvasRight">
           Open Drawer
         </button>
+		<input type="text" id="focusOutTarget" placeholder="Click here to simulate focus change" style="margin-top: 20px;">
       </div>
     </div>
   </div>
@@ -48,5 +49,25 @@
   <!-- Bootstrap JS & Popper -->
   <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.min.js"></script>
+  
+  <script>
+  const offcanvas = document.getElementById('offcanvasRight')
+  const openDrawerBtn = document.getElementById('openDrawerBtn');
+   const offcanvasInstance = new bootstrap.Offcanvas(offcanvas);
+   const focusOutTarget = document.getElementById('focusOutTarget');
+  function handleFocusChange(event) {
+      // If the focus is no longer on the offcanvas (or the button), close it
+      if (!offcanvas.contains(event.target) &&event.target !== openDrawerBtn) {
+        offcanvasInstance.hide();
+      }
+    }
+
+    // Listen for focus events on the document
+    document.addEventListener('focusin', handleFocusChange);
+	openDrawerBtn.addEventListener('click', function () {
+      offcanvasInstance.show();  // Show the offcanvas
+    });
+  
+  </script>
 </body>
 </html>
