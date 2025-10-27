@@ -25,8 +25,7 @@
         <button class="btn btn-primary" data-bs-toggle="offcanvas"  id="openDrawerBtn" data-bs-target="#offcanvasRight" aria-controls="offcanvasRight">
           Open Drawer
         </button>
-		<input type="text" id="focusOutTarget" placeholder="Click here to simulate focus change" style="margin-top: 20px;">
-      </div>
+		 </div>
     </div>
   </div>
 
@@ -54,7 +53,6 @@
   const offcanvas = document.getElementById('offcanvasRight')
   const openDrawerBtn = document.getElementById('openDrawerBtn');
    const offcanvasInstance = new bootstrap.Offcanvas(offcanvas);
-   const focusOutTarget = document.getElementById('focusOutTarget');
   function handleFocusChange(event) {
       // If the focus is no longer on the offcanvas (or the button), close it
       if (!offcanvas.contains(event.target) &&event.target !== openDrawerBtn) {
